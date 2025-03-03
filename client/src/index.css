@@ -1,0 +1,18 @@
+
+/* index.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%; /* Asegura que el body ocupe toda la altura de la ventana */
+    background-color: #2E2E2E; /* Gris oscuro */
+  }
+  
+  #root {
+    height: 100%; /* Asegura que el div con id 'root' ocupe toda la altura */
+  }
+  
+  
