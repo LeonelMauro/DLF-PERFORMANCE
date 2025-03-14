@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import {
   InputBase,
   Box,
@@ -239,6 +238,18 @@ const Header = () => {
                   </Button>
                 </ListItem>
               ))}
+              {cart.length > 0 && (
+              <Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                sx={{ mt: 2 }}
+                component={Link}
+                to="/factura"
+              >
+                Generar Factura
+              </Button>
+            )}
             </List>
           ) : (
             <MuiTypography>No hay productos en el carrito.</MuiTypography>

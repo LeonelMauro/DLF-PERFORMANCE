@@ -8,7 +8,7 @@ import 'swiper/css/pagination';
 import { Box, Typography, Grid, CardContent, Card, CardActionArea, CardMedia } from '@mui/material';
 import empresa1 from '../assets/img/empresa1.jpeg';
 import empresa2 from '../assets/img/empresa2.jpeg';
-import empresa3 from '../assets/img/empresa3.jpeg';
+import logo from '../assets/img/logo.jpeg';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -41,7 +41,7 @@ const Home = () => {
   // Seleccionar 3 productos aleatorios para la sección de ofertas
   const randomProducts = [...productList].sort(() => Math.random() - 0.5).slice(0, 3);
 
-  const images = [empresa1, empresa2, empresa3];
+  const images = [empresa1, empresa2, logo];
 
   return (
     <Box sx={{ backgroundColor: '#f5f5f5', minHeight: '100vh', padding: 4 }}>

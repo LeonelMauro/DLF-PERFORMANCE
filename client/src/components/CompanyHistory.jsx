@@ -26,7 +26,7 @@ const CompanyHistory = () => {
           padding: 4,
           mt: -3,
           backgroundImage: "linear-gradient(135deg,rgb(60, 75, 139), #D2B48C)",
-          color: "rgb(46, 45, 43)",
+          color: "rgb(31, 27, 19)",
           borderRadius: "12px",
           position: "relative",
           zIndex: 2,

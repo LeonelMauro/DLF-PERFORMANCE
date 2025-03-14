@@ -11,7 +11,8 @@ import Products from './pages/Products';
 import ListProduct from './pages/ListProducts';
 import ProductList from './pages/ProductsList';
 import SearchResults from './pages/SearchResults';
-import CompanyHistory from './components/CompanyHistory'
+import CompanyHistory from './components/CompanyHistory';
+import Factura from './pages/Factura';
 import './fonts.css'; // Asegúrate de que esta hoja de estilos cargue correctamente
 
 // Crear un tema personalizado con "regular italic 400"
@@ -48,6 +49,7 @@ function App() {
               <Route path="/products" element={<ProductList />} />
               <Route path="/historia" element={<CompanyHistory />} />
               <Route path="/search" element={<SearchResults />} />
+              <Route path="/factura" element={<Factura />} />
             </Routes>
           </div>
         </BrowserRouter>

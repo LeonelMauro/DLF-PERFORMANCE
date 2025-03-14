@@ -12,6 +12,7 @@ import { TaskService } from './task/task.service';
 import { TaskModule } from './task/task.module';
 import { StockModule } from './stock/stock.module';
 import { PhotosModule } from './photos/photos.module';
+import { FacturaModule } from './factura/factura.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { PhotosModule } from './photos/photos.module';
     TaskModule,
     StockModule,
     PhotosModule,
+    FacturaModule,
   ],
   controllers: [AppController, TaskController],
   providers: [AppService, TaskService],
