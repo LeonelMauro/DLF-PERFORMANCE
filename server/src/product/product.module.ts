@@ -8,6 +8,8 @@ import { MulterModule } from '@nestjs/platform-express';
 import { PhotosModule } from 'src/photos/photos.module';
 import { Category } from 'src/category/entities/category.entity';
 import { Photo } from 'src/photos/entities/photo.entity';
+import { StockModule } from 'src/stock/stock.module';
+import { Stock } from 'src/stock/entities/stock.entity';
 
 
 @Module({
@@ -15,9 +17,10 @@ import { Photo } from 'src/photos/entities/photo.entity';
     MulterModule.register({
       dest: './photos/uploads', // Carpeta donde se almacenarán los archivos
     }),
-    TypeOrmModule.forFeature([Category, Product, Photo]), // Registra el repositorio Product
+    TypeOrmModule.forFeature([Category, Product, Photo,Stock]), // Registra el repositorio Product
     CategoryModule, // Importa CategoryModule si se necesita para relaciones
     PhotosModule,
+    StockModule,
   ],
   controllers: [ProductController],
   providers: [ProductService],

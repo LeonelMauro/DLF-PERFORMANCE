@@ -33,10 +33,12 @@ export class ProductController {
   async create(
     @Body() createProductDto: CreateProductDto, 
     @UploadedFiles() photos: Express.Multer.File[],
+    
   ) {
     if (photos && photos.length > 0) {
       createProductDto.photos = photos.map((photo) => `/photos/uploads/${photo.filename}`);
     }
+    console.log('DTO recibido:', createProductDto); // 🔍
     return this.productService.create(createProductDto);
   }
 

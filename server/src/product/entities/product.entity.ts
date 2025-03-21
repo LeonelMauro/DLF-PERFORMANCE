@@ -1,7 +1,7 @@
 import { Category } from "src/category/entities/category.entity";
 import { Stock } from "src/stock/entities/stock.entity";
 import { Photo } from 'src/photos/entities/photo.entity';
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Product {
@@ -11,8 +11,9 @@ export class Product {
   @Column()
   name: string;
 
-  @Column({ type: 'numeric' })
+  @Column({ type: 'decimal', nullable: false, default: 0 , precision: 10, scale: 2})
   price: number;
+
 
   @Column({ unique: true })
   code: string;
@@ -20,7 +21,7 @@ export class Product {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createAt: Date;
 
-  @Column()
+  @Column({ type: 'decimal', nullable: false, default: 0 })
   quantity: number;
   
   @Column({ nullable: true }) // Permite que sea opcional
@@ -31,9 +32,10 @@ export class Product {
   @JoinColumn({ name: 'categoryId' }) // Vincula la columna explícitamente
   category: Category;
   
-  // Relación con Stock (Uno a Muchos)
-  @OneToMany(() => Stock, (stock) => stock.product, { cascade: true })
-  stocks: Stock[];
+  @OneToOne(() => Stock, (stock) => stock.product, { cascade: ['insert', 'update'] })
+  @JoinColumn({ name: 'stockId' }) // 🔹 Define la clave foránea explícitamente
+  stock: Stock;
+
 
   // Relación con Photo (Uno a Muchos)
   @OneToMany(() => Photo, (photo) => photo.product, { cascade: true })

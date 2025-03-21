@@ -40,6 +40,7 @@ function ListProduct() {
     axios
       .get(`${BASE_URL}/product`)
       .then((response) => {
+        console.log('Productos cargados:', response.data); // Verifica si stockId existe en los productos
         const updatedProducts = response.data.map((product) => ({
           ...product,
           photos: product.photos.map((photo) => ({
@@ -87,7 +88,7 @@ function ListProduct() {
 
   const handleEditProduct = () => {
     if (!productToEdit) return;
-
+    
     axios
       .put(`${BASE_URL}/product/${productToEdit.id}`, {
         name: productToEdit.name,
