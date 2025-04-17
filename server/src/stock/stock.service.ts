@@ -1,10 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { CreateStockDto } from './dto/create-stock.dto';
 import { UpdateStockDto } from './dto/update-stock.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Stock } from './entities/stock.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class StockService {
-  create(createStockDto: CreateStockDto) {
+  constructor(
+    @InjectRepository(Stock)
+    private readonly stockRepository: Repository<Stock>
+
+  ){}
+  async create(createStockDto: CreateStockDto) {
     return 'This action adds a new stock';
   }
 

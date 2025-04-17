@@ -30,9 +30,8 @@ export class ProductService {
     const product = this.productRepository.create({
         ...productData,
         price,    // Guardar precio en product
-        quantity, // Guardar cantidad en product
     });
-
+    
     await this.productRepository.save(product);
 
     // Si hay fotos, asignarlas correctamente

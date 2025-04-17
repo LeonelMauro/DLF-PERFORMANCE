@@ -10,6 +10,15 @@ const Factura = () => {
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   const handleConfirmarPedido = async () => {
+    
+    const ventaData = {
+      productos: cart.map((item) => ({
+        productId: item.id,
+        quantity: item.quantity,
+      })),
+      total,
+    };
+
     const facturaData = {
       productos: cart.map(({ id, name, price, quantity,code }) => ({
         id,
@@ -21,6 +30,17 @@ const Factura = () => {
       })),
       total,
     };
+
+    const ventaResponse = await fetch('http://localhost:3000/sale/createSale', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(ventaData),
+    });
+
+    if (!ventaResponse.ok) {
+      const errorText = await ventaResponse.text();
+      throw new Error(`Error al registrar la venta: ${errorText}`);
+    }
 
     try {
       const response = await fetch('http://localhost:3000/factura', {
